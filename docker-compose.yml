@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+    networks:
+      - app-network
+
+  redis:
+    image: redis:alpine
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+    networks:
+      - app-network
+
+  visualizer:
+    image: dockersamples/visualizer:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: overlay
