@@ -26,7 +26,7 @@ Projet realise dans le cadre d'un challenge technique pour l'admission en B3 Dev
 ## Infrastructure
 | Machine | Role | IP |
 |---------|------|----|
-| docker-base | Manager (Leader) | 192.168.64.4 |
+| manager | Manager (Leader) | 192.168.64.4 |
 | worker1 | Worker | 192.168.64.5 |
 | worker2 | Worker | 192.168.64.6 |
 
@@ -44,6 +44,14 @@ Projet realise dans le cadre d'un challenge technique pour l'admission en B3 Dev
 - Verifier le cluster : docker node ls / docker service ls
 - Scaling : docker service scale myapp_web=6
 - Rolling update : docker service update --image nginx:latest myapp_web
+
+## Acces
+| Service | URL | Identifiants |
+|---------|-----|--------------|
+| Nginx | http://192.168.64.4 | - |
+| Nginx | http://192.168.64.5 | - |
+| Nginx | http://192.168.64.6 | - |
+| Portainer | http://192.168.64.4:9000 | admin / adminadmin12 |
 
 ## Auteur
 Aristide Portal-Hadancourt - Avril 2026
